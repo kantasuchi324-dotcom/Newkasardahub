@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ମୋ କସରଦା - ମୋ କର୍ତ୍ତବ୍ୟ</title>
+    <style>
+        :root {
+            --primary-color: #1b5e20;
+            --secondary-color: #2e7d32;
+            --accent-color: #ff8f00;
+            --bg-color: #f4f6f5;
+            --text-color: #333333;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        .issue-btn {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+            border: 1px solid var(--secondary-color);
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .issue-btn:hover, .issue-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .suggestion-box {
+            background: #fff8e1;
+            border-left: 4px solid var(--accent-color);
+            padding: 1.2rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+        .suggestion-box.active {
+            display: block;
+        }
+        .suggestion-box ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .suggestion-box li {
+            margin-bottom: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        th {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+        }
+        .download-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .download-btn:hover {
+            background-color: #fb8c00;
+        }
+        .reply-box {
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .admin-reply-input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .emergency-card {
+            background: #ffebee;
+            border: 1px solid #ef5350;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .emergency-card h3 {
+            color: #c62828;
+            margin-bottom: 0.3rem;
+        }
+        .emergency-card p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>କସରଦା ଗ୍ରାମ ଡିଜିଟାଲ୍ ହବ୍</h1>
+        <p>ମୋ କସରଦା - ମୋ କର୍ତ୍ତବ୍ୟ</p>
+    </header>
+
+    <div class="container">
+
+        <!-- ସମସ୍ୟା ଓ ପରାମର୍ଶ ସେକ୍ସନ୍ -->
+        <div class="section">
+            <h2>ଗ୍ରାମ୍ୟ ସମସ୍ୟା ଓ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ ପରାମର୍ଶ</h2>
+            <p>ନିମ୍ନୋକ୍ତ ବଟନ୍‌ଗୁଡ଼ିକ ଉପରେ କ୍ଲିକ୍ କରି ଗ୍ରାମର ଉନ୍ନତି ପାଇଁ କରିବାକୁ ଥିବା ଜରୁରୀ ପଦକ୍ଷେପଗୁଡ଼ିକ ଦେଖନ୍ତୁ:</p><br>
+            <div class="btn-grid">
+                <button class="issue-btn" onclick="showSuggestion('water')">ପାଣି</button>
+                <button class="issue-btn" onclick="showSuggestion('electricity')">ବିଦ୍ୟୁତ୍</button>
+                <button class="issue-btn" onclick="showSuggestion('road')">ରାସ୍ତା</button>
+                <button class="issue-btn" onclick="showSuggestion('cleanliness')">ସ୍ୱଚ୍ଛତା</button>
+                <button class="issue-btn" onclick="showSuggestion('medical')">ମେଡିକାଲ୍</button>
+                <button class="issue-btn" onclick="showSuggestion('school')">ସ୍କୁଲ୍</button>
+                <button class="issue-btn" onclick="showSuggestion('sports')">ଖେଳ</button>
+                <button class="issue-btn" onclick="showSuggestion('others')">ଅନ୍ୟାନ୍ୟ</button>
+            </div>
+
+            <div id="water" class="suggestion-box">
+                <strong>💧 ପାଣି ସମସ୍ୟା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ନଳକୂଅ ଚାରିପାଖରେ ପାଣି ଜମିବାକୁ ନ ଦେଇ ଶୁଷ୍କ ଓ ପରିଷ୍କାର ରଖନ୍ତୁ।</li>
+                    <li>ଗ୍ରାମର ସମସ୍ତ ପାନୀୟ ଜଳ ପ୍ରକଳ୍ପ ଏବଂ ଟ୍ୟାପ୍‌ଗୁଡ଼ିକରୁ ପାଣି ନଷ୍ଟ ହେଉଥିଲେ ତୁରନ୍ତ ମରାମତି କରନ୍ତୁ।</li>
+                    <li>ଗ୍ରାମର ପୋଖରୀ ଓ ଜଳସ୍ରୋତଗୁଡ଼ିକୁ ଅଳିଆ ଆବର୍ଜନାରୁ ମୁକ୍ତ ରଖି ଜଳ ସଂରକ୍ଷଣ କରନ୍ତୁ।</li>
+                    <li>ଗ୍ରାମବାସୀମାନେ ମିଶି ପାନୀୟ ଜଳର ଶୁଦ୍ଧତା ନିୟମିତ ଯାଞ୍ଚ କରାନ୍ତୁ।</li>
+                </ul>
+            </div>
+
+            <div id="electricity" class="suggestion-box">
+                <strong>⚡ ବିଦ୍ୟୁତ୍ ସମସ୍ୟା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଗ୍ରାମର ଷ୍ଟ୍ରିଟ୍ ଲାଇଟ୍‌ଗୁଡ଼ିକ ଠିକ୍ ଭାବେ ଜଳୁଛି କି ନାହିଁ ତଦାରଖ କରି ଖରାପ ଥିଲେ ବଦଲାନ୍ତୁ।</li>
+                    <li>ଘରଗୁଡ଼ିକରୁ ଆସୁଥିବା ତାର ଏବଂ ରାସ୍ତାକଡ଼ର ବିପଜ୍ଜନକ ଝୁଲୁଥିବା ତାରଗୁଡ଼ିକୁ ସୁରକ୍ଷିତ ରଖିବାକୁ ବିଭାଗକୁ ଜଣାନ୍ତୁ।</li>
+                    <li>ରାତ୍ରୀ ସମୟରେ ଅନାବଶ୍ୟକ ଆଲୋକ ଅଫ୍ କରି ବିଦ୍ୟୁତ୍ ସଞ୍ଚୟ କରନ୍ତୁ।</li>
+                    <li>ଟ୍ରାନ୍ସଫର୍ମର ଚାରିପାଖରେ ସଫାସୁତୁରା ରଖି ନିଆଁ କିମ୍ବା ଅନ୍ୟ ବିପଦରୁ ଦୂରେଇ ରୁହନ୍ତୁ।</li>
+                </ul>
+            </div>
+
+            <div id="road" class="suggestion-box">
+                <strong>🛣️ ରାସ୍ତା ସମସ୍ୟା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଗ୍ରାମର ମୁଖ୍ୟ ଓ ଭ୍ୟାଣ୍ତର ରାସ୍ତାରେ ଥିବା ଗାତଗୁଡ଼ିକୁ ମିଳିତ ଭାବେ ମାଟି ବା ମୋରମ୍ ପକାଇ ଭରଣ କରନ୍ତୁ।</li>
+                    <li>ରାସ୍ତା କଡ଼ରୁ ଅନାବଶ୍ୟକ ଜଙ୍ଗଲ ଓ ବୁଦାଗୁଡ଼ିକୁ କାଟି ରାସ୍ତାକୁ ଓସାରିଆ ରଖନ୍ତୁ।</li>
+                    <li>ବର୍ଷା ପାଣି ଯେପରି ରାସ୍ତା ଉପରେ ଜମି ରହିବ ନାହିଁ, ସେଥିପାଇଁ ପାଣି ଯିବାକୁ ଡ୍ରେନ୍ ବା ନାଳୀର ବ୍ୟବସ୍ଥା କରନ୍ତୁ।</li>
+                    <li>ଗ୍ରାମ ଭିତରେ ଗାଡ଼ିଗୁଡ଼ିକୁ ନିୟନ୍ତ୍ରିତ ଗତିରେ ଚଳାଇବାକୁ ଯୁବକମାନେ ସଚେତନ କରନ୍ତୁ।</li>
+                </ul>
+            </div>
+
+            <div id="cleanliness" class="suggestion-box">
+                <strong>🧹 ସ୍ୱଚ୍ଛତା ସମସ୍ୟା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଘରର ଅଳିଆ ଆବର୍ଜନାକୁ ଖାଲି ସ୍ଥାନରେ ନ ପକାଇ ନିର୍ଦ୍ଦିଷ୍ଟ ଡଷ୍ଟବିନ୍ ବା କମ୍ପୋଷ୍ଟ ପିଟ୍‌ରେ ପକାନ୍ତୁ।</li>
+                    <li>ମାସକୁ ଥରେ କିମ୍ବା ବିଶେଷ ଦିବସରେ ଗ୍ରାମବାସୀ ଏକାଠି ହୋଇ ସାମୂହିକ ସଫାଇ ଅଭିଯାନ କରନ୍ତୁ।</li>
+                    <li>ପ୍ଲାଷ୍ଟିକ୍ ବ୍ୟାଗ୍ ବଦଳରେ କପଡ଼ା ବ୍ୟାଗ୍ ବ୍ୟବହାର କରିବାକୁ ପ୍ରତ୍ୟେକ ଘରେ ସଚେତନତା ଆଣନ୍ତୁ।</li>
+                    <li>ଘର ସାମ୍ନା ଡ୍ରେନ୍‌ଗୁଡ଼ିକୁ ସଫା ରଖନ୍ତୁ ଯେପରି ମଶା ବଂଶବୃଦ୍ଧି କରିପାରିବେ ନାହିଁ।</li>
+                </ul>
+            </div>
+
+            <div id="medical" class="suggestion-box">
+                <strong>🏥 ମେଡିକାଲ୍ ଓ ସ୍ୱାସ୍ଥ୍ୟ ସମସ୍ୟା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଗ୍ରାମରେ ସ୍ୱାସ୍ଥ୍ୟ ସଚେତନତା ଶିବିର ଆୟୋଜନ କରିବାକୁ ସ୍ଥାନୀୟ କର୍ତ୍ତୁପକ୍ଷଙ୍କୁ ଅନୁରୋଧ କରନ୍ତୁ।</li>
+                    <li>ଗର୍ଭବତୀ ମହିଳା ଓ ବୃଦ୍ଧମାନଙ୍କୁ ଜରୁରୀକାଳୀନ ସମୟରେ ଠିକ୍ ସମୟରେ ଡାକ୍ତରଖାନା ନେବାକୁ ଗ୍ରାମର ଯୁବକମାନେ ସହଯୋଗ କରନ୍ତୁ।</li>
+                    <li>ଘର ଚାରିପାଖରେ ପାଣି ଜମିବାକୁ ନ ଦେଇ ମଶା ବଂଶବୃଦ୍ଧି ପ୍ରତିରୋଧ କରନ୍ତୁ।</li>
+                    <li>ପ୍ରତି ଘରେ ପ୍ରାଥମିକ ଚିକିତ୍ସା (First Aid) ସରଞ୍ଜାମ ରଖିବାକୁ ପରାମର୍ଶ ଦିଅନ୍ତୁ।</li>
+                </ul>
+            </div>
+
+            <div id="school" class="suggestion-box">
+                <strong>🏫 ସ୍କୁଲ୍ ସମସ୍ୟା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଗ୍ରାମର ସ୍କୁଲ୍ ପରିସରକୁ ସର୍ବଦା ପରିଷ୍କାର ଓ ପବିତ୍ର ରଖିବାରେ ପିଲା ଓ ଶିକ୍ଷକଙ୍କୁ ସହଯୋଗ କରନ୍ତୁ।</li>
+                    <ul>ପ୍ରତି ମାସରେ ଗ୍ରାମବାସୀ ଓ ଅଭିଭାବକମାନେ ସ୍କୁଲ୍ ପରିଦର୍ଶନ କରି ପାଠପଢ଼ା ଏବଂ ମଧ୍ୟାହ୍ନ ଭୋଜନ ତଦାରଖ କରନ୍ତୁ।</ul>
+                    <li>ପିଲାମାନଙ୍କୁ ନିୟମିତ ସ୍କୁଲ୍ ପଠାଇବା ପାଇଁ ପିତାମାତାଙ୍କୁ ଉତ୍ସାହିତ କରନ୍ତୁ।</li>
+                    <li>ସ୍କୁଲ୍ ପାଇଁ ଆବଶ୍ୟକୀୟ ଛୋଟମୋଟ ମରାମତି କାର୍ଯ୍ୟରେ ଗ୍ରାମର ଯୁବକମାନେ ଆଗୁଆ ଭାବେ ସାମିଲ୍ ହୁଅନ୍ତୁ।</li>
+                </ul>
+            </div>
+
+            <div id="sports" class="suggestion-box">
+                <strong>⚽ ଖେଳ ଏବଂ ଯୁବ ବିକାଶ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଗ୍ରାମର ଖେଳପଡ଼ିଆକୁ ସଫା ସୁତୁରା ରଖି ନିୟମିତ ଖେଳାଳିମାନଙ୍କ ଅଭ୍ଯାସ ପାଇଁ ଅନୁକୂଳ କରନ୍ତୁ।</li>
+                    <li>ଯୁବପିଢ଼ିଙ୍କୁ ନିଶାଠାରୁ ଦୂରରେ ରଖିବା ପାଇଁ ଗ୍ରାମରେ କ୍ରିକେଟ୍, ଫୁଟବଲ୍ କିମ୍ବା କବାଡ଼ି ପ୍ରତିଯୋଗିତା କରନ୍ତୁ।</li>
+                    <li>ଖେଳକୁଦ ସାମଗ୍ରୀ କ୍ରୟ କରିବା ପାଇଁ ଗ୍ରାମର ସହଯୋଗ ପାଣ୍ଠି ପ୍ରସ୍ତୁତ କରନ୍ତୁ।</li>
+                    <li>ଶାରୀରିକ ଫିଟ୍‌ନେସ୍ ଓ ଯୋଗାଭ୍ଯାସ ପାଇଁ ସକାଳେ ଯୁବକମାନେ ଏକାଠି ହୁଅନ୍ତୁ।</li>
+                </ul>
+            </div>
+
+            <div id="others" class="suggestion-box">
+                <strong>🤝 ଅନ୍ୟାନ୍ୟ ଆବଶ୍ୟକତା ସମାଧାନ ପାଇଁ ଗ୍ରାମବାସୀଙ୍କ କର୍ତ୍ତବ୍ୟ:</strong>
+                <ul>
+                    <li>ଗ୍ରାମର ବିକାଶ ଓ ସାମାଜିକ କାର୍ଯ୍ୟ ପାଇଁ ଏକ ଦୃଢ଼ ଯୁବ କମିଟି (ଯଥା: ଵୀର ସୁରେନ୍ଦ୍ର ସାଇ ୟୁଥ୍ କ୍ଲବ୍) ଗଠନ କରନ୍ତୁ।</li>
+                    <li>ସରକାରୀ ଯୋଜନାଗୁଡ଼ିକ ଗ୍ରାମର ପ୍ରତ୍ୟେକ ଅସହାୟ ଲୋକଙ୍କ ପାଖରେ ପହଞ୍ଚିବା ପାଇଁ ସହାୟତା କରନ୍ତୁ।</li>
+                    <li>ଗ୍ରାମରେ ଶାନ୍ତି, ସଦ୍‌ଭାବନା ଏବଂ ପରସ୍ପର ଭାଇଚାରା ବଜାୟ ରଖିବାକୁ ନିୟମିତ ବୈଠକ କରନ୍ତୁ।</li>
+                    <li>ଗ୍ରାମର ପରିବେଶକୁ ସବୁଜ ସୁନ୍ଦର କରିବା ପାଇଁ ରାସ୍ତା କଡ଼ରେ ବୃକ୍ଷରୋପଣ କରନ୍ତୁ।</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ଅଭିଯୋଗ ବାକ୍ସ -->
+        <div class="section">
+            <h2>ଅଭିଯୋଗ ବାକ୍ସ</h2>
+            <form id="grievanceForm">
+                <div class="form-group">
+                    <label for="name">ନାମ:</label>
+                    <input type="text" id="name" required placeholder="ଆପଣଙ୍କ ନାମ ଲେଖନ୍ତୁ">
+                </div>
+                <div class="form-group">
+                    <label for="location">ସମସ୍ୟାର ସ୍ଥାନ (କସରଦା):</label>
+                    <input type="text" id="location" required placeholder="ଗ୍ରାମର ୱାର୍ଡ ବା ନିର୍ଦ୍ଦିଷ୍ଟ ସ୍ଥାନ">
+                </div>
+                <div class="form-group">
+                    <label for="details">ବିବରଣୀ:</label>
+                    <textarea id="details" rows="4" required placeholder="ସମସ୍ୟା ବିଷୟରେ ବିସ୍ତୃତ ଭାବରେ ଲେଖନ୍ତୁ"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="media">ଫଟୋ/ଭିଡିଓ ଯୋଡ଼ନ୍ତୁ:</label>
+                    <input type="file" id="media" accept="image/*,video/*">
+                </div>
+                <button type="submit" class="submit-btn">ଅଭିଯୋଗ ଦାଖଲ କରନ୍ତୁ</button>
+            </form>
+        </div>
+
+        <!-- ଅଭିଯୋଗ ଇନ୍‌ବକ୍ସ -->
+        <div class="section">
+            <h2>ଅଭିଯୋଗ ଇନ୍‌ବକ୍ସ (ସୁରକ୍ଷିତ ରେକର୍ଡ)</h2>
+            <p>ଦାଖଲ କରାଯାଇଥିବା ସମସ୍ତ ଅଭିଯୋଗ ଏଠାରେ ସବୁଦିନ ପାଇଁ ସୁରକ୍ଷିତ ରହିବ ଏବଂ ଡିଲିଟ୍ ହେବ ନାହିଁ:</p>
+            <div style="overflow-x:auto;">
+                <table id="grievanceTable">
+                    <thead>
+                        <tr>
+                            <th>କ୍ରମିକ</th>
+                            <th>ନାମ</th>
+                            <th>ସ୍ଥାନ</th>
+                            <th>ବିବରଣୀ</th>
+                            <th>ତାରିଖ</th>
+                            <th>ପ୍ରଶାସନିକ ରିପ୍ଲେ / ସ୍ଥିତି</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ଜାଭାସ୍କ୍ରିପ୍ଟ ଦ୍ୱାରା ଡାଟା ଲୋଡ୍ ହେବ -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="download-btn" onclick="downloadCSV()">CSV ଫାଇଲ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ</button>
+        </div>
+
+        <!-- ଜରୁରୀ ସହାୟତା -->
+        <div class="section">
+            <h2>ଜରୁରୀ ସହାୟତା</h2>
+            <div class="emergency-grid">
+                <div class="emergency-card">
+                    <h3>ଜରୁରୀ ସହାୟତା</h3>
+                    <p>୧୧୨</p>
+                </div>
+                <div class="emergency-card">
+                    <h3>ଆମ୍ବୁଲାନ୍ସ</h3>
+                    <p>୧୦୮</p>
+                </div>
+                <div class="emergency-card">
+                    <h3>ଅଗ୍ନିଶମ ସେବା</h3>
+                    <p>୧୦୧</p>
+                </div>
+                <div class="emergency-card">
+                    <h3>ଶିଶୁ ସହାୟତା</h3>
+                    <p>୧୦୯୮</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 କସରଦା ଗ୍ରାମ ଡିଜିଟାଲ୍ ହବ୍ | ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ</p>
+    </footer>
+
+    <script>
+        // ପରାମର୍ଶ ବକ୍ସ ଦେଖାଇବା ପାଇଁ ଫଙ୍କସନ୍
+        function showSuggestion(id) {
+            const boxes = document.querySelectorAll('.suggestion-box');
+            boxes.forEach(box => box.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.issue-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // ଅଭିଯୋଗ ଫର୍ମ ସବ୍‌ମିଟ୍ (ଲୋକାଲ୍ ଷ୍ଟୋରେଜ୍‌ରେ ସୁରକ୍ଷିତ ରହିବ, ଡିଲିଟ୍ ହେବ ନାହିଁ)
+        document.getElementById('grievanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const location = document.getElementById('location').value;
+            const details = document.getElementById('details').value;
+            const date = new Date().toLocaleDateString();
+            const reply = ""; // ଡିଫଲ୍ଟ ଖାଲି ରିପ୍ଲେ
+
+            const grievance = { name, location, details, date, reply };
+            
+            let grievances = JSON.parse(localStorage.getItem('kasarda_grievances')) || [];
+            grievances.push(grievance);
+            localStorage.setItem('kasarda_grievances', JSON.stringify(grievances));
+
+            alert('ଆପଣଙ୍କ ଅଭିଯୋଗ ସଫଳତା ସହ ଦାଖଲ ହୋଇଛି ଏବଂ ସୁରକ୍ଷିତ ଭାବେ ରହିଲା!');
+            document.getElementById('grievanceForm').reset();
+            loadGrievances();
+        });
+
+        // ଇନ୍‌ବକ୍ସ ଟେବୁଲ୍ ଲୋଡ୍ କରିବା ଏବଂ ରିପ୍ଲେ ଦେବା ବ୍ୟବସ୍ଥା
+        function loadGrievances() {
+            const tableBody = document.querySelector('#grievanceTable tbody');
+            tableBody.innerHTML = '';
+            
+            let grievances = JSON.parse(localStorage.getItem('kasarda_grievances')) || [];
+            
+            if (grievances.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">କୌଣସି ଅଭିଯୋଗ ନାହିଁ</td></tr>';
+                return;
+            }
+
+            grievances.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.name}</td>
+                    <td>${item.location}</td>
+                    <td>${item.details}</td>
+                    <td>${item.date}</td>
+                    <td>
+                        <div class="reply-box">${item.reply ? 'ରିପ୍ଲେ: ' + item.reply : 'କୌଣସି ରିପ୍ଲେ ଦିଆଯାଇ ନାହିଁ'}</div>
+                        <input type="text" class="admin-reply-input" placeholder="ରିପ୍ଲେ ଲେଖନ୍ତୁ..." onchange="saveReply(${index}, this.value)">
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // ଅଭିଯୋଗରେ ରିପ୍ଲେ ସେଭ୍ କରିବା
+        function saveReply(index, replyText) {
+            let grievances = JSON.parse(localStorage.getItem('kasarda_grievances')) || [];
+            if(grievances[index]) {
+                grievances[index].reply = replyText;
+                localStorage.setItem('kasarda_grievances', JSON.stringify(grievances));
+                alert('ରିପ୍ଲେ ସଫଳତା ସହ ଅପଡେଟ୍ ହେଲା!');
+                loadGrievances();
+            }
+        }
+
+        // CSV ଡାଉନଲୋଡ୍ କରିବା
+        function downloadCSV() {
+            let grievances = JSON.parse(localStorage.getItem('kasarda_grievances')) || [];
+            if (grievances.length === 0) {
+                alert('ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ କୌଣସି ଅଭିଯୋଗ ନାହିଁ!');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,Sl No,Name,Location,Details,Date,Reply\n";
+            grievances.forEach((item, index) => {
+                let row = [index + 1, `"${item.name}"`, `"${item.location}"`, `"${item.details}"`, item.date, `"${item.reply || ''}"`];
+                csvContent += row.join(",") + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Kasarda_Grievances.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // ପେଜ୍ ଲୋଡ୍ ହେଲେ ଅଭିଯୋଗଗୁଡ଼ିକ ଦେଖାଇବ
+        window.onload = loadGrievances;
+    </script>
+</body>
+</html>
